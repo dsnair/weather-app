@@ -3,14 +3,15 @@ import React, { Component } from "react";
 class Weather extends Component {
   render() {
     return (
-      <div>
+      <section className="weather">
         {/* extract object values */}
         {Object.keys(this.props.weather).map(k => (
           <p key={k}>
-            {k}: {this.props.weather[k]}
+            {this.props.weather[k]}
           </p>
         ))}
-      </div>
+        <img src={this.props.weather.icon} alt="weather icon" />
+      </section>
     );
   }
 }

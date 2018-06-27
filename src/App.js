@@ -11,25 +11,26 @@ class App extends Component {
     event.preventDefault();
     const city = event.target.elements.city.value;
     const country = event.target.elements.country.value;
-    const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_KEY}&units=imperial`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_KEY}&units=imperial`;
     const request = await fetch(url);
     const response = await request.json();
     this.setState({
-      temperature: response.main.temp,
+      icon: `https://openweathermap.org/img/w/${response.weather[0].icon}.png`,
       condition: response.weather[0].main,
-      humidity: response.main.humidity,
-      windSpeed: response.wind.speed,
-      city: response.name
+      city: response.name,
+      temperature: `${response.main.temp}\xB0F`,
+      windspeed: `${response.wind.speed}miles/hour`,
+      humidity: `${response.main.humidity}%`,
     });
   };
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         {/* Lifting state up: pass down fetchWeather() from App (parent) to Form (children) as prop & state from App to Weather */}
         <Form fetchWeather={this.fetchWeather} />
         <Weather weather={this.state} />
-      </div>
+      </React.Fragment>
     );
   }
 }
