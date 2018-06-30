@@ -1,15 +1,23 @@
 import React, { Component } from "react";
+import "./Form.css";
 
 class Form extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Find out today's weather in your city</h1>
+        <h1>What's today's weather in your city?</h1>
         {/* onSubmit attribute calls fetchWeather() function */}
         <form onSubmit={this.props.fetchWeather}>
-          <input type="text" name="city" id="city" placeholder="San Francisco" required />
-          <input type="text" name="country" id="country" placeholder="US" required />
-          <button>Find Weather!</button>
+          <label htmlFor="city">City</label>
+          <input type="text" name="city" placeholder="San Francisco" required />
+          <label htmlFor="country">Country</label>
+          <input
+            type="text"
+            name="country"
+            placeholder="United States"
+            required
+          />
+          <button>Find Weather</button>
         </form>
       </React.Fragment>
     );

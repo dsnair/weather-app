@@ -1,16 +1,16 @@
 import React, { Component } from "react";
+import "./Weather.css";
 
+// extract object values
 class Weather extends Component {
   render() {
     return (
       <section className="weather">
-        {/* extract object values */}
-        {Object.keys(this.props.weather).map(k => (
-          <p key={k}>
-            {this.props.weather[k]}
-          </p>
-        ))}
-        <img src={this.props.weather.icon} alt="weather icon" />
+        {!this.props.error
+          ? Object.keys(this.props.weather).map(k => (
+              <p key={k}>{this.props.weather[k]}</p>
+            ))
+          : ""}
       </section>
     );
   }
