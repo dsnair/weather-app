@@ -1,9 +1,68 @@
 .weather {
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2fr 1fr;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 60vw;
+  margin: 5%;
+  border-top: 1px solid lightsalmon;
+  border-bottom: 1px solid lightsalmon;
+}
+
+.row1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.row2 {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  height: 8vh;
   justify-items: center;
   align-items: center;
-  margin: 5%;
+  margin: 0;
+  border-left: 1px solid lightsalmon;
+}
+
+#icon {
+  font-size: 15em;
+  align-self: center;
+  justify-self: center;
+}
+
+#city {
+  font-size: 1.5em;
+  margin: 1em 0 0;
+}
+
+#temp {
+  font-size: 8em;
+  font-weight: 900;
+  margin: 0.5em;
+}
+
+#cond {
+  font-size: 1.5em;
+  align-self: center;
+  justify-self: center;
+}
+
+#humidity {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+#windspeed {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+#units {
+  font-size: 0.5em;
 }

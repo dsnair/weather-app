@@ -1,27 +1,29 @@
 import React, { Component } from "react";
+import Form from "./Form.js";
+import Weather from "./Weather.js";
 import "./App.css";
-import Form from "./components/Form.js";
-import Weather from "./components/Weather.js";
 
 const API_KEY = "233f705c30c2444c805396c28b078a89";
 
 class App extends Component {
-  state = { results: {}, error: false }; // initial state is empty object
+  state = { results: null, error: false }; // initial state
   fetchWeather = async event => {
-    event.preventDefault();
+    event.preventDefault(); // prevent page reloading
     const city = event.target.elements.city.value;
     const country = event.target.elements.country.value;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_KEY}&units=imperial`;
     try {
       const request = await fetch(url);
       const response = await request.json();
+      // update state
       this.setState({
         results: {
-          condition: response.weather[0].main,
+          cond: response.weather[0].main,
+          iconId: `wi wi-owm-${response.weather[0].id}`,
           city: response.name,
-          temperature: `${response.main.temp}\xB0F`,
-          windspeed: `${response.wind.speed}mph`,
-          humidity: `${response.main.humidity}%`
+          temp: `${Math.round(response.main.temp)}`,
+          windspeed: `${Math.round(response.wind.speed)} mph`,
+          humidity: `${Math.round(response.main.humidity)}%`
         },
         error: false
       });
@@ -32,7 +34,9 @@ class App extends Component {
 
   renderError() {
     if (this.state.error) {
-      return <h1>Something went wrong. Please try again.</h1>;
+      return (
+        <span className="error">Something went wrong. Please try again.</span>
+      );
     }
   }
 
@@ -42,7 +46,9 @@ class App extends Component {
         {this.renderError()}
         {/* Lifting state up: pass down fetchWeather() from App (parent) to Form (children) as prop & state from App to Weather */}
         <Form fetchWeather={this.fetchWeather} />
-        <Weather weather={this.state.results} error={this.state.error} />
+        {this.state.results && (
+          <Weather weather={this.state.results} error={this.state.error} />
+        )}
       </React.Fragment>
     );
   }

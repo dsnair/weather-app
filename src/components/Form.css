@@ -7,7 +7,8 @@ h1 {
 form {
   display: grid;
   grid-auto-flow: column;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template: 1fr 1fr / 1fr 1fr;
+  width: 60vw;
 }
 
 form label {
@@ -22,24 +23,26 @@ form input {
   border-width: 1px;
   background-color: rgb(240, 240, 240);
   color: rgb(28, 30, 35);
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   text-transform: capitalize;
   font-size: 1em;
   letter-spacing: 2px;
-  margin-right: 1.5em;
-  padding: 10px;
+  margin: 0 1.5em 1em 0;
 }
 
 form ::placeholder {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: rgb(28, 30, 35);
   opacity: 0.5;
 }
 
 form button {
+  grid-row: 1 / 3;
+  align-self: center;
+  width: 5vw;
   outline: none;
   border: 1px solid rgb(28, 30, 35);
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 0.8em;
   text-transform: capitalize;
   letter-spacing: 2px;
