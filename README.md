@@ -1,9 +1,11 @@
 Get today's weather in your city.
 
-This (react) app is hosted at [http://dsnair.github.io/weather-app](http://dsnair.github.io/weather-app). It uses the [OpenWeatherMap API](https://openweathermap.org/api) and the weather icons from [https://github.com/erikflowers/weather-icons](https://github.com/erikflowers/weather-icons).
+This (react) app uses the free [OpenWeatherMap API](https://openweathermap.org/api) and [weather icons](https://github.com/erikflowers/weather-icons).
 
 ## Installation Instruction
+```bash
 $ git clone https://github.com/dsnair/weather-app.git
 $ cd weather-app
 $ npm install
 $ npm start
+```

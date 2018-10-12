@@ -6,9 +6,9 @@ import "./App.css";
 const API_KEY = "233f705c30c2444c805396c28b078a89";
 
 class App extends Component {
-  state = { results: null, error: false }; // initial state
+  state = { results: null, error: false };
   fetchWeather = async event => {
-    event.preventDefault(); // prevent page reloading
+    event.preventDefault();
     const city = event.target.elements.city.value;
     const country = event.target.elements.country.value;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_KEY}&units=imperial`;
@@ -44,7 +44,6 @@ class App extends Component {
     return (
       <React.Fragment>
         {this.renderError()}
-        {/* Lifting state up: pass down fetchWeather() from App (parent) to Form (children) as prop & state from App to Weather */}
         <Form fetchWeather={this.fetchWeather} />
         {this.state.results && (
           <Weather weather={this.state.results} error={this.state.error} />
