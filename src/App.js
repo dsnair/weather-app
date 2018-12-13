@@ -15,7 +15,6 @@ class App extends Component {
     try {
       const request = await fetch(url);
       const response = await request.json();
-      // update state
       this.setState({
         results: {
           cond: response.weather[0].main,
